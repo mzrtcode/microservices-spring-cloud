@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "company")
@@ -21,4 +22,9 @@ public class Company {
     // Configura el formato de la fecha al serializar y deserializar JSON, usando el formato "dd/MM/yyyy".
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate foundationDate;
+
+    @OneToMany(mappedBy = "company",
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<WebSite> websites;
 }
