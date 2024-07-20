@@ -1,12 +1,12 @@
 package com.mzrtcode.ms_companies.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Entity
-@Table(name = "website")
 @Data
 public class WebSite implements Serializable {
 
@@ -21,6 +21,8 @@ public class WebSite implements Serializable {
     private String description;
 
     @ManyToOne
+    @JoinColumn(name = "id_company") // Clave foránea
+    @JsonBackReference
     private Company company;
 
 

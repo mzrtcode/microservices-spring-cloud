@@ -1,6 +1,7 @@
 package com.mzrtcode.ms_companies.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -23,8 +24,10 @@ public class Company {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate foundationDate;
 
-    @OneToMany(mappedBy = "company",
+    @OneToMany(mappedBy = "company", // Nombre del campo en WebSite
             fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
-    private List<WebSite> websites;
+    @JsonManagedReference
+    private List<WebSite> webSites;
+
 }

@@ -6,10 +6,15 @@ spring:
     username: root
     password: toor
     hikari:
-      maximun-pool-size: 5
+      maximum-pool-size: 5
       connection-timeout: 20000
 
 logging:
   level:
     hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+server:
+  port: 8081
+  servlet:
+    context-path: /ms-companies

@@ -3,6 +3,7 @@ package com.mzrtcode.ms_companies.service;
 import com.mzrtcode.ms_companies.model.Category;
 import com.mzrtcode.ms_companies.model.Company;
 import com.mzrtcode.ms_companies.repository.ICompanyRepository;
+import com.mzrtcode.ms_companies.repository.IWebSiteRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ import java.util.Objects;
 public class CompanyServiceImpl implements ICompanyService{
 
     private final ICompanyRepository companyRepository;
+    private final IWebSiteRepository webSiteRepository;
 
     @Override
     public Company readByName(String name) {
@@ -26,13 +28,15 @@ public class CompanyServiceImpl implements ICompanyService{
                 .orElseThrow(() -> new NoSuchElementException("Company not found"));
     }
 
-    @Override
     public Company create(Company company) {
-        company.getWebsites().forEach(website ->{
-            if (Objects.isNull(website.getCategory())){
+        // Asignar la propiedad 'company' en cada WebSite y verificar la categoría
+        company.getWebSites().forEach(website -> {
+            if (Objects.isNull(website.getCategory())) {
                 website.setCategory(Category.NONE);
             }
+            website.setCompany(company); // Asignar la referencia a 'company'
         });
+
         return this.companyRepository.save(company);
     }
 
