@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: ms-companies
+  datasource:
+    url: jdbc:postgresql://localhost:5432/companies
+    username: root
+    password: toor
+    hikari:
+      maximun-pool-size: 5
+      connection-timeout: 20000
+
+logging:
+  level:
+    hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
