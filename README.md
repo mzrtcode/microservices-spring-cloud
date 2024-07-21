@@ -14,3 +14,5 @@ Este microservicio está construido con las siguientes tecnologías:
 - ✨ **Lombok**: Para reducir el código boilerplate.
 - 📖 **SpringDoc OpenAPI 2.6.0**: Generación automática de documentación para APIs.
 - 📊 **Spring Boot Actuator**: Añade endpoints para monitorización y gestión del estado de la aplicación.
+- 🧭 **Spring Eureka Client**: Para la registración y descubrimiento de servicios en un entorno de microservicios.
+
