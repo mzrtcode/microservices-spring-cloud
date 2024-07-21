@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: ms-reports
+  profiles:
+    deafult: default
+  config:
+    import: "optional:configserver:http://localhost:7777"
+
+
+server:
+  port: 0
+  servlet:
+    context-path: /ms-reports
+
+eureka:
+  instance:
+    instance-id: "${spring.application.name}:${random.value}"
+  client:
+    server-url:
+      defaultZone: http://localhost:8761/eureka
