@@ -1,6 +1,14 @@
 spring:
   application:
     name: ms-companies
+  datasource:
+    url: jdbc:postgresql://localhost:5432/companies
+    username: root
+    password: toor
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 20000
+
 logging:
   level:
     hibernate.SQL: DEBUG
