@@ -1,17 +1,14 @@
 spring:
-  datasource:
-    url: ${db.url}
-    username: ${db.username}
-    password: ${db.password}
-    hikari:
-      maximum-pool-size: ${db.maximum-pool-size}
-      connection-timeout: ${db.connection-timeout}
   application:
     name: ms-companies
-  profiles:
-    deafult: default
-  config:
-    import: "optional:configserver:http://localhost:7777"
+  datasource:
+    url: jdbc:postgresql://localhost:5432/companies
+    username: root
+    password: toor
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 20000
+
 logging:
   level:
     hibernate.SQL: DEBUG
